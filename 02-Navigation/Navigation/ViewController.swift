@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         title = "Sample App"
     }
 
-    @IBAction func swichMode(sender: UIButton) {
+    @IBAction func swichMode(_ sender: UIButton) {
         if let colorNavigationController = navigationController as? ColorNavigationController {
             colorNavigationController.switchMode()
         }

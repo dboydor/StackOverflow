@@ -16,9 +16,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func hideButton(button: UIButton) {
+    @IBAction func hideButton(_ button: UIButton) {
         button.removeFromSuperview()
-        UIView.animateWithDuration(0.3, delay: 0.1, options: .CurveEaseOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseOut, animations: {
             self.stackView.layoutIfNeeded()
         }, completion: nil)
     }

@@ -26,20 +26,20 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    let items = "Cras, justo, odio, dapibus, ac, facilisis, in, egestas, eget, quam".componentsSeparatedByString(",")
+    let items = "Cras, justo, odio, dapibus, ac, facilisis, in, egestas, eget, quam".components(separatedBy: ",")
     let cellIdentifier = "CellIdentifier"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) 
         cell.textLabel?.text = items[indexPath.item]
         return cell
     }

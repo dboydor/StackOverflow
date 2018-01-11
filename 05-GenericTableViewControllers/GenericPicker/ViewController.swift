@@ -26,7 +26,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private var payees: [Payee] {
+    fileprivate var payees: [Payee] {
         var retVal = [Payee]()
         retVal.append(Payee(payee: "Pepa"))
         retVal.append(Payee(payee: "Kodl"))
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         return retVal
     }
     
-    private var operators: [Operator] {
+    fileprivate var operators: [Operator] {
         var retVal = [Operator]()
         retVal.append(Operator(name: "Vodaphone"))
         retVal.append(Operator(name: "O2"))
@@ -44,14 +44,14 @@ class ViewController: UIViewController {
         return retVal
     }
     
-    @IBAction func openOperators(sender: AnyObject) {
-        let controller = PickerViewController<Operator>(style: .Plain)
+    @IBAction func openOperators(_ sender: AnyObject) {
+        let controller = PickerViewController<Operator>(style: .plain)
         controller.items = operators
         navigationController?.pushViewController(controller, animated: true)
     }
     
-    @IBAction func openPayees(sender: AnyObject) {
-        let controller = PickerViewController<Payee>(style: .Plain)
+    @IBAction func openPayees(_ sender: AnyObject) {
+        let controller = PickerViewController<Payee>(style: .plain)
         controller.items = payees
         navigationController?.pushViewController(controller, animated: true)
     }

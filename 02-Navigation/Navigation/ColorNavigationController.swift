@@ -33,8 +33,8 @@ class ColorNavigationController: UINavigationController {
         setupForMode(dark)
     }
 
-    func setupForMode(darkMode: Bool) {
-        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: darkMode ? UIColor.grayColor() : UIColor.whiteColor()]
+    func setupForMode(_ darkMode: Bool) {
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: darkMode ? UIColor.gray : UIColor.white]
     }
     
     func switchMode() {

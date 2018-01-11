@@ -30,13 +30,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textFields.sortInPlace { $0.frame.origin.y < $1.frame.origin.y }
+        textFields.sort { $0.frame.origin.y < $1.frame.origin.y }
     }
 }
 
 extension ViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if let currentIndex = textFields.indexOf(textField) where currentIndex < textFields.count-1 {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let currentIndex = textFields.index(of: textField), currentIndex < textFields.count-1 {
             textFields[currentIndex+1].becomeFirstResponder()
         } else {
             textField.resignFirstResponder()

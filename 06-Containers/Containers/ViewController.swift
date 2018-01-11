@@ -31,33 +31,33 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("TableViewController") as! UIViewController
+        let controller = storyboard?.instantiateViewController(withIdentifier: "TableViewController") as! UIViewController
         addController(controller)
     }
     
-    @IBAction func segmentValueChanged(sender: UISegmentedControl) {
+    @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
         let controllerID = sender.selectedSegmentIndex == 0 ? "TableViewController" : "OtherViewController"
 
-        let controller = storyboard?.instantiateViewControllerWithIdentifier(controllerID) as! UIViewController
+        let controller = storyboard?.instantiateViewController(withIdentifier: controllerID) as! UIViewController
         removeController(currentController)
         addController(controller)
     }
     
-    func addController(controller: UIViewController) {
+    func addController(_ controller: UIViewController) {
         
         addChildViewController(controller)
         
         containerView.addSubview(controller.view)
-        controller.view.setTranslatesAutoresizingMaskIntoConstraints(false)
-        var constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: nil, metrics: nil, views: ["view" : controller.view])
-        constraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: nil, metrics: nil, views: ["view" : controller.view])
-        NSLayoutConstraint.activateConstraints(constraints)
+        controller.view.translatesAutoresizingMaskIntoConstraints = false
+        var constraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view" : controller.view])
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view" : controller.view])
+        NSLayoutConstraint.activate(constraints)
         
-        controller.didMoveToParentViewController(self)
+        controller.didMove(toParentViewController: self)
         currentController = controller
     }
     
-    func removeController(controller: UIViewController?) {
+    func removeController(_ controller: UIViewController?) {
         if let controller = controller {
             controller.view.removeFromSuperview()
             controller.removeFromParentViewController()
